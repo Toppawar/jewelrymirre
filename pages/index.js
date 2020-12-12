@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import Login from './Login';
+import Login from './login';
 
 import Grid from '@material-ui/core/Grid';
 
-import styles from './styles';
+import styles from '../styles/styles';
 
 const useStyles = makeStyles(styles);
 
