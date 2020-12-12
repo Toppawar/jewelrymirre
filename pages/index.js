@@ -4,7 +4,7 @@ import Login from './Login';
 
 import Grid from '@material-ui/core/Grid';
 
-import styles from './styles';
+import styles from '../styles/styles';
 
 const useStyles = makeStyles(styles);
 

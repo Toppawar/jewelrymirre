@@ -15,7 +15,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { getClients, editClient, createClient, removeClient } from '../../actions/clients';
 
 
-import styles from './Clients.style';
+import styles from '../../styles/Clients.style';
 
 const useStyles = makeStyles(styles);
 
@@ -65,7 +65,7 @@ const columns = [
 // ];
 
 
-const Orders = ({
+const OrdersPage = ({
     fetchClients,
     changeClient,
     addClient,
@@ -323,4 +323,4 @@ const mapDispatchToProps = {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Orders);
+export default connect(mapStateToProps, mapDispatchToProps)(OrdersPage);

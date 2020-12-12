@@ -12,11 +12,11 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import styles from './Login.styles';
+import styles from '../../styles/Login.styles';
 
 const useStyles = makeStyles(styles);
 
-const Login = () => {
+const LoginPage = () => {
     const classes = useStyles();
     const { enqueueSnackbar } = useSnackbar();
     const [userState, setUserState] = useState({
@@ -122,4 +122,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default LoginPage;
