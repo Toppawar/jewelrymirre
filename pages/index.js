@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import Login from './Login';
+import Login from './login';
 
 import Grid from '@material-ui/core/Grid';
 

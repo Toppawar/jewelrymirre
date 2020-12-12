@@ -2,7 +2,7 @@ import CustomImage from './Logo.style';
 
 const Logo = () => (
     <CustomImage
-        src="/../public/jewelrymirre-logo.svg"
+        src="/jewelrymirre-logo.svg"
         alt="Jewelrymirre-logo"
         layout="relative"
         width="250px"
