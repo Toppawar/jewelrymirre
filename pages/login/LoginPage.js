@@ -50,6 +50,7 @@ const LoginPage = () => {
                     })
                     .catch((error) => {
                         const { message } = error;
+                        setIsLoading(false)
                         enqueueSnackbar(`Error de autenticación: ${message || 'desconocido'}`, {
                             variant: 'error',
                             autoHideDuration: 3000,
