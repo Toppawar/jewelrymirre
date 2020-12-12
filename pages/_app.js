@@ -1,7 +1,44 @@
+import { useCallback, useState } from 'react';
+import Head from 'next/head'
+
 import '../styles/globals.css'
 
+import UserProvider from '../components/UserProvider';
+import { SnackbarProvider } from 'notistack';
+
+import { Provider } from 'react-redux';
+import { createWrapper } from 'next-redux-wrapper';
+import store from '../reducers/store';
+
+import Appbar from '../components/Appbar';
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+  const [user, setUser] = useState({});
+
+  const handleChange = useCallback(
+    (user) => {
+      setUser(user);
+    }, []
+  );
+
+  return (
+    <Provider store={store}>
+      <SnackbarProvider>
+        <UserProvider onChange={handleChange}>
+          <Head>
+            <title>JewelryMirre</title>
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          {user && user.uid && (<Appbar />)}
+          <Component {...pageProps} />
+        </UserProvider>
+      </SnackbarProvider>
+    </Provider>
+  );
 }
 
-export default MyApp
+const makeStore = () => store;
+const wrapper = createWrapper(makeStore);
+
+export default wrapper.withRedux(MyApp);

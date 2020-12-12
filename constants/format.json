@@ -1,0 +1,12 @@
+{
+  email,
+  name,
+  lastName,
+  phone,
+  country,
+  city,
+  postalCode,
+  address,
+  addressNumber,
+  floor
+}
