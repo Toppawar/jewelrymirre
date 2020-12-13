@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
             <title>JewelryMirre</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
-          {user && user.uid && (<Appbar />)}
+          <Appbar user={user} />
           <Component {...pageProps} />
         </UserProvider>
       </SnackbarProvider>

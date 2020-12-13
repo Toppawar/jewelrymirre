@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import clients from './clients';
+import orders from './orders';
 
 const reducers = combineReducers({
-    clients
+    clients,
+    orders
 });
 
 const componseEnhancer = process.env.NEXT_PUBLIC_APP_ENVIRONMENT === 'dev' ? composeWithDevTools({

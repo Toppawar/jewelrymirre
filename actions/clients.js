@@ -14,9 +14,19 @@ import {
     EDIT_CLIENT,
     EDIT_CLIENT_SUCCESS,
     EDIT_CLIENT_FAILURE,
+
+    SEARCH_CLIENT,
+    SEARCH_CLIENT_SUCCESS,
+    SEARCH_CLIENT_FAILURE,
 } from '../constants/clients';
 
-import { listenClientsPromise, editClientPromise, addClientPromise, removeClientPromise } from '../firebase/client';
+import {
+    listenClientsPromise,
+    editClientPromise,
+    addClientPromise,
+    removeClientPromise,
+    searchClientPromise,
+} from '../firebase/client';
 
 
 export const getClientsAction = () => ({
@@ -66,7 +76,7 @@ export const createClientActionFailure = (error) => ({
 export const createClient = (client) => (dispatch) => {
     dispatch(createClientAction());
     return addClientPromise(client)
-        .then((payload) => {
+        .then(() => {
             dispatch(createClientActionSuccess(client))
             return Promise.resolve();
         })
@@ -125,6 +135,32 @@ export const removeClient = (id) => (dispatch) => {
         })
         .catch((error) => {
             dispatch(removeClientActionFailure(error))
+            return Promise.reject();
+        })
+};
+
+export const searchClientAction = () => ({
+    type: SEARCH_CLIENT
+});
+
+export const searchClientActionSuccess = () => ({
+    type: SEARCH_CLIENT_SUCCESS,
+});
+
+export const searchClientActionFailure = (error) => ({
+    type: SEARCH_CLIENT_FAILURE,
+    payload: error,
+});
+
+export const searchClient = (type, query) => (dispatch) => {
+    dispatch(searchClientAction());
+    return searchClientPromise(type, query)
+        .then((options) => {
+            dispatch(searchClientActionSuccess())
+            return Promise.resolve(options);
+        })
+        .catch((error) => {
+            dispatch(searchClientActionFailure(error))
             return Promise.reject();
         })
 };
