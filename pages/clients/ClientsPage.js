@@ -24,6 +24,7 @@ const DEFAULT_CLIENT = {
     id: '',
     firstName: '',
     lastName: '',
+    email: '',
     phone: '',
     country: '',
     city: '',
@@ -38,6 +39,7 @@ const columns = [
     { field: 'id', headerName: 'Id', width: 70 },
     { field: 'firstName', headerName: 'Nombre', width: 130 },
     { field: 'lastName', headerName: 'Apellidos', width: 130 },
+    { field: 'email', headerName: 'Correo', width: 240 },
     { field: 'phone', headerName: 'Teléfono', width: 130 },
     { field: 'country', headerName: 'País', width: 130 },
     { field: 'city', headerName: 'Ciudad', width: 130 },
@@ -51,21 +53,9 @@ const columns = [
     { field: 'floor', headerName: 'Piso', width: 130 },
 ];
 
-// const rows = [
-//     {
-//         id: 1, firstName: 'Pablo', lastName: 'Montiel López',
-//         phone: '601187437', country: 'España', city: 'Madrid', postalCode: '28041', address: 'Calle Canción del Olvido',
-//         addressNumber: 40, floor: '1º Derecha'
-//     },
-//     {
-//         id: 2, firstName: 'Pablo', lastName: 'Montiel López',
-//         phone: '601187437', country: 'España', city: 'Madrid', postalCode: '28041', address: 'Calle Canción del Olvido',
-//         addressNumber: 40, floor: '1º Derecha'
-//     }
-// ];
 
 
-const OrdersPage = ({
+const ClientsPage = ({
     fetchClients,
     changeClient,
     addClient,
@@ -81,8 +71,6 @@ const OrdersPage = ({
     const [newClient, setNewClient] = useState(DEFAULT_CLIENT);
     const [updatedClient, setUpdatedClient] = useState(DEFAULT_CLIENT);
     const [isLoading, setIsLoading] = useState(false);
-
-
 
     useEffect(
         () => {
@@ -323,4 +311,4 @@ const mapDispatchToProps = {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrdersPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ClientsPage);

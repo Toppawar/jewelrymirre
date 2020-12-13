@@ -20,9 +20,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 
 
-import routeNames from '../../constants/routeNames.js';
+import { routes, routeNames } from '../../constants/routes.js';
 
 
 import { logOut } from '../../firebase/client';
@@ -32,7 +33,9 @@ import styles from './Appbar.style';
 const useStyles = makeStyles(styles);
 
 
-const CustomAppbar = () => {
+const CustomAppbar = ({
+    user
+}) => {
 
     const classes = useStyles();
     const router = useRouter();
@@ -57,7 +60,7 @@ const CustomAppbar = () => {
         }, [setDrawerOpen]
     );
 
-    return (
+    return user && user.uid && router.pathname !== routes.LOGIN_ROUTE ? (
         <>
             <AppBar position="static">
                 <Toolbar variant="dense">
@@ -91,6 +94,10 @@ const CustomAppbar = () => {
                 </div>
                 <Divider />
                 <List>
+                    <ListItem button key="orders" onClick={handleRoute.bind(this, '/orders')}>
+                        <ListItemIcon><MoveToInboxIcon /></ListItemIcon>
+                        <ListItemText primary="Pedidos" />
+                    </ListItem>
                     <ListItem button key="clients" onClick={handleRoute.bind(this, '/clients')}>
                         <ListItemIcon><AssignmentIndIcon /></ListItemIcon>
                         <ListItemText primary="Clientes" />
@@ -102,7 +109,8 @@ const CustomAppbar = () => {
                 </List>
             </Drawer>
         </>
-    );
+    )
+        : null;
 }
 
 export default CustomAppbar;
